@@ -1,6 +1,7 @@
 package com.example.sessiontracker.processors;
 
 import com.example.sessiontracker.services.SessionService;
+import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
