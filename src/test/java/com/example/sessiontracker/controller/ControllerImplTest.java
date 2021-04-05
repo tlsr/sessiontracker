@@ -1,5 +1,6 @@
 package com.example.sessiontracker.controller;
 
+import com.example.sessiontracker.messages.Command;
 import com.example.sessiontracker.messages.Message;
 import com.example.sessiontracker.processors.AnonSessionProcessorImpl;
 import com.example.sessiontracker.processors.SessionProcessorsFactory;
@@ -21,7 +22,7 @@ class ControllerImplTest {
 
     @Test
     void legalStartSessionProcessor() {
-        Message message = new Message("user","");
+        Message message = new Message("user","", Command.START);
         AnonSessionProcessorImpl mock = mock(AnonSessionProcessorImpl.class);
         when(sessionProcessorsFactory.createSessionProcessor(message)).thenReturn(mock);
         controller.startSessionProcessor(message);
@@ -31,8 +32,8 @@ class ControllerImplTest {
 
     @Test
     void tryStartSessionProcessorWithSameUser() {
-        Message message = new Message("user","");
-        Message message1 = new Message("user","java");
+        Message message = new Message("user","", Command.START);
+        Message message1 = new Message("user","java", Command.START);
         AnonSessionProcessorImpl mock = mock(AnonSessionProcessorImpl.class);
         when(sessionProcessorsFactory.createSessionProcessor(message)).thenReturn(mock);
         controller.startSessionProcessor(message);
@@ -41,7 +42,7 @@ class ControllerImplTest {
 
     @Test
     void stopSessionProcessor() {
-        Message message = new Message("user","");
+        Message message = new Message("user","", Command.START);
         AnonSessionProcessorImpl mock = mock(AnonSessionProcessorImpl.class);
         when(sessionProcessorsFactory.createSessionProcessor(message)).thenReturn(mock);
         controller.startSessionProcessor(message);
@@ -51,7 +52,7 @@ class ControllerImplTest {
 
     @Test
     void tryStopUnexcitingSessionProcessor() {
-        Message message = new Message("user","");
+        Message message = new Message("user","", Command.START);
         assertThrows(IllegalArgumentException.class,()->controller.stopSessionProcessor(message));
     }
 }

@@ -9,14 +9,15 @@ public class SessionProcessorsFactoryImpl implements SessionProcessorsFactory{
     @Autowired
     private AnonSessionProcessorImpl anonSessionProcessor;
     @Autowired
-    private NamedSessionProcessorImpl namedSessionProcessor;
+    private SubjectedSessionProcessorImpl subjectedSessionProcessor;
 
     @Override
     public SessionProcessor createSessionProcessor(Message message) {
         if(message.getSubject().isEmpty()){
             return anonSessionProcessor;
         }else{
-            return namedSessionProcessor;
+            subjectedSessionProcessor.setSubject(message.getSubject());
+            return subjectedSessionProcessor;
         }
     }
 

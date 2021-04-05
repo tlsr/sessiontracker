@@ -18,7 +18,7 @@ public class SessionServiceImplTest {
     SimpleSessionRepo simpleSessionRepo;
 
     @InjectMocks
-    SessionServiceImpl sessionService ;
+    AnonSessionServiceImpl sessionService ;
 
     @Test
     public void test(){

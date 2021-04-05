@@ -15,20 +15,4 @@ public class SessionTrackerApplication {
         SpringApplication.run(SessionTrackerApplication.class, args);
     }
 
-/*    @Override
-    public void run(String... args) throws Exception {
-        Scanner sc = new Scanner(System.in);
-        while (true) {
-            System.out.println("Enter command");
-            String command = sc.nextLine();
-            switch (command) {
-                case "START":
-                    sessionProcessor.start();
-                    break;
-                case "STOP":
-                    sessionProcessor.stop();
-                    break;
-            }
-        }
-    }*/
 }

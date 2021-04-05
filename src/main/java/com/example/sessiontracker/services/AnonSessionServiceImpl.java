@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 import java.time.LocalTime;
 
 @Service
-public class SessionServiceImpl implements SessionService {
+public class AnonSessionServiceImpl implements SessionService {
     private final SimpleSessionRepo simpleSessionRepo;
 
-    public SessionServiceImpl(SimpleSessionRepo simpleSessionRepo) {
+    public AnonSessionServiceImpl(SimpleSessionRepo simpleSessionRepo) {
         this.simpleSessionRepo = simpleSessionRepo;
     }
 

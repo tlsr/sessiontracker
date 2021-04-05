@@ -1,5 +1,6 @@
 package com.example.sessiontracker.processors;
 
+import com.example.sessiontracker.messages.Command;
 import com.example.sessiontracker.messages.Message;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,21 +15,21 @@ public class SessionProcessorFactory {
     @Mock
     AnonSessionProcessorImpl anonSessionProcessor;
     @Mock
-    NamedSessionProcessorImpl namedSessionProcessor;
+    SubjectedSessionProcessorImpl namedSessionProcessor;
     @InjectMocks
     SessionProcessorsFactoryImpl sessionProcessorsFactory;
 
     @Test
     public void anonSessionProcessorCreationTest(){
-        Message message = new Message("user1","");
+        Message message = new Message("user1","", Command.START);
         SessionProcessor s = sessionProcessorsFactory.createSessionProcessor(message);
         assertTrue(s instanceof AnonSessionProcessorImpl);
     }
 
     @Test
     public void namedSessionProcessorCreationTest(){
-        Message message = new Message("user1","Java");
+        Message message = new Message("user1","Java", Command.START);
         SessionProcessor s = sessionProcessorsFactory.createSessionProcessor(message);
-        assertTrue(s instanceof NamedSessionProcessorImpl);
+        assertTrue(s instanceof SubjectedSessionProcessorImpl);
     }
 }
